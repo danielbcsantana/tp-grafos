@@ -1,0 +1,460 @@
+{
+  "V": 8717,
+  "E": 31525,
+  "origem": 0,
+  "repeticoes": 30,
+  "z": 1.959963984540054,
+  "algoritmos": {
+    "BFS": {
+      "n": 30,
+      "media_ms": 5.744199799998266,
+      "desvio_ms": 1.314045335891358,
+      "ic95_inf_ms": 5.273983356087133,
+      "ic95_sup_ms": 6.214416243909398,
+      "distribuicao_ic": "Normal (Z)",
+      "complexidade_teorica": "O(V+E)"
+    },
+    "DFS": {
+      "n": 30,
+      "media_ms": 13.622416733334338,
+      "desvio_ms": 3.8394582875253387,
+      "ic95_inf_ms": 12.248509476717011,
+      "ic95_sup_ms": 14.996323989951666,
+      "distribuicao_ic": "Normal (Z)",
+      "complexidade_teorica": "O(V+E)"
+    },
+    "Eulerianidade": {
+      "n": 30,
+      "media_ms": 7.2016768666647595,
+      "desvio_ms": 1.7841407005110486,
+      "ic95_inf_ms": 6.563242048080401,
+      "ic95_sup_ms": 7.840111685249118,
+      "distribuicao_ic": "Normal (Z)",
+      "complexidade_teorica": "O(V+E)"
+    },
+    "Dijkstra (heap bin\u00e1rio)": {
+      "n": 30,
+      "media_ms": 12.460088400003619,
+      "desvio_ms": 0.7036142382884448,
+      "ic95_inf_ms": 12.20830790508728,
+      "ic95_sup_ms": 12.711868894919958,
+      "distribuicao_ic": "Normal (Z)",
+      "complexidade_teorica": "O((V+E) log V)"
+    },
+    "Bellman-Ford": {
+      "n": 30,
+      "media_ms": 53.16081900000048,
+      "desvio_ms": 15.626091071204215,
+      "ic95_inf_ms": 47.569196873242575,
+      "ic95_sup_ms": 58.752441126758384,
+      "distribuicao_ic": "Normal (Z)",
+      "complexidade_teorica": "O(V\u00b7E) (pior caso)"
+    },
+    "Tarjan (CFC, dirigido)": {
+      "n": 30,
+      "media_ms": 12.670628566671857,
+      "desvio_ms": 7.6961146061174945,
+      "ic95_inf_ms": 9.916659930143558,
+      "ic95_sup_ms": 15.424597203200156,
+      "distribuicao_ic": "Normal (Z)",
+      "complexidade_teorica": "O(V+E)"
+    },
+    "Kruskal (union-find)": {
+      "n": 30,
+      "media_ms": 23.09908110000265,
+      "desvio_ms": 0.739846535171141,
+      "ic95_inf_ms": 22.83433528240712,
+      "ic95_sup_ms": 23.36382691759818,
+      "distribuicao_ic": "Normal (Z)",
+      "complexidade_teorica": "O(E log E)"
+    },
+    "Prim (heap bin\u00e1rio)": {
+      "n": 30,
+      "media_ms": 35.628603033331764,
+      "desvio_ms": 6.434835053400193,
+      "ic95_inf_ms": 33.325969194665866,
+      "ic95_sup_ms": 37.93123687199766,
+      "distribuicao_ic": "Normal (Z)",
+      "complexidade_teorica": "O(E log V)"
+    },
+    "Floyd-Warshall (V=1000)": {
+      "n": 30,
+      "media_ms": 1130.8846073000032,
+      "desvio_ms": 45.08288618803881,
+      "ic95_inf_ms": 1114.752200110102,
+      "ic95_sup_ms": 1147.0170144899043,
+      "distribuicao_ic": "Normal (Z)",
+      "complexidade_teorica": "\u0398(V^3)",
+      "obs": "subgrafo conexo com V=1000, E=2456"
+    }
+  },
+  "corretude": {
+    "bfs_alcancados": 8717,
+    "bfs_excentricidade_origem": 7,
+    "dfs_visitados": 8717,
+    "euleriano": {
+      "conexo": true,
+      "vertices_grau_impar": 5088,
+      "circuito_euleriano": false,
+      "caminho_euleriano": false
+    },
+    "dijkstra_igual_bfs": true,
+    "bellman_ford_igual_bfs": true,
+    "bellman_ford_rodadas_ate_convergir": 4,
+    "bellman_ford_ciclo_negativo": false,
+    "tarjan_num_cfc": 5492,
+    "tarjan_maior_cfc": 3226,
+    "tarjan_maior_cfc_frac": 0.3700814500401514,
+    "tarjan_cfc_unitarias": 5491,
+    "tarjan_top5": [
+      3226,
+      1,
+      1,
+      1,
+      1
+    ],
+    "kruskal_arestas": 8716,
+    "kruskal_peso": 8716,
+    "prim_arestas": 8716,
+    "prim_peso": 8716,
+    "tarjan_confere_networkx": true,
+    "fw_vetorizado_igual_puro_150v": true
+  },
+  "escalabilidade": {
+    "BFS": [
+      {
+        "V": 872,
+        "E": 2094,
+        "media_ms": 0.4245602999986886
+      },
+      {
+        "V": 1743,
+        "E": 5720,
+        "media_ms": 1.1674674000062168
+      },
+      {
+        "V": 3487,
+        "E": 13655,
+        "media_ms": 2.0523233000005803
+      },
+      {
+        "V": 5230,
+        "E": 22277,
+        "media_ms": 3.1356521999981624
+      },
+      {
+        "V": 6974,
+        "E": 28617,
+        "media_ms": 4.194701899996289
+      },
+      {
+        "V": 8717,
+        "E": 31525,
+        "media_ms": 5.050860899999066
+      }
+    ],
+    "DFS": [
+      {
+        "V": 872,
+        "E": 2094,
+        "media_ms": 0.8676677000011068
+      },
+      {
+        "V": 1743,
+        "E": 5720,
+        "media_ms": 2.3336097000026257
+      },
+      {
+        "V": 3487,
+        "E": 13655,
+        "media_ms": 3.9441970000041233
+      },
+      {
+        "V": 5230,
+        "E": 22277,
+        "media_ms": 6.0789889000005815
+      },
+      {
+        "V": 6974,
+        "E": 28617,
+        "media_ms": 7.409137199996962
+      },
+      {
+        "V": 8717,
+        "E": 31525,
+        "media_ms": 8.550409299994044
+      }
+    ],
+    "Eulerianidade": [
+      {
+        "V": 872,
+        "E": 2094,
+        "media_ms": 0.6477719999935516
+      },
+      {
+        "V": 1743,
+        "E": 5720,
+        "media_ms": 1.5718027000048096
+      },
+      {
+        "V": 3487,
+        "E": 13655,
+        "media_ms": 2.648603200003663
+      },
+      {
+        "V": 5230,
+        "E": 22277,
+        "media_ms": 4.218438799998125
+      },
+      {
+        "V": 6974,
+        "E": 28617,
+        "media_ms": 5.46628839999812
+      },
+      {
+        "V": 8717,
+        "E": 31525,
+        "media_ms": 5.879184799997006
+      }
+    ],
+    "Dijkstra (heap bin\u00e1rio)": [
+      {
+        "V": 872,
+        "E": 2094,
+        "media_ms": 1.3596894000016846
+      },
+      {
+        "V": 1743,
+        "E": 5720,
+        "media_ms": 3.3483788000012282
+      },
+      {
+        "V": 3487,
+        "E": 13655,
+        "media_ms": 5.298801399996478
+      },
+      {
+        "V": 5230,
+        "E": 22277,
+        "media_ms": 13.16954900000269
+      },
+      {
+        "V": 6974,
+        "E": 28617,
+        "media_ms": 10.370024899998498
+      },
+      {
+        "V": 8717,
+        "E": 31525,
+        "media_ms": 16.352229500000703
+      }
+    ],
+    "Bellman-Ford": [
+      {
+        "V": 872,
+        "E": 2094,
+        "media_ms": 3.5510592999997925,
+        "rodadas": 3
+      },
+      {
+        "V": 1743,
+        "E": 5720,
+        "media_ms": 9.859601399998041,
+        "rodadas": 4
+      },
+      {
+        "V": 3487,
+        "E": 13655,
+        "media_ms": 17.498706600005676,
+        "rodadas": 4
+      },
+      {
+        "V": 5230,
+        "E": 22277,
+        "media_ms": 27.722975899996527,
+        "rodadas": 4
+      },
+      {
+        "V": 6974,
+        "E": 28617,
+        "media_ms": 51.34078370000168,
+        "rodadas": 5
+      },
+      {
+        "V": 8717,
+        "E": 31525,
+        "media_ms": 48.92946889999905,
+        "rodadas": 4
+      }
+    ],
+    "Tarjan (CFC, dirigido)": [
+      {
+        "V": 872,
+        "E": 2094,
+        "media_ms": 1.3986186000011003
+      },
+      {
+        "V": 1743,
+        "E": 5720,
+        "media_ms": 2.623845399998004
+      },
+      {
+        "V": 3487,
+        "E": 13655,
+        "media_ms": 6.08699720000061
+      },
+      {
+        "V": 5230,
+        "E": 22277,
+        "media_ms": 8.3879794999973
+      },
+      {
+        "V": 6974,
+        "E": 28617,
+        "media_ms": 10.85473169999318
+      },
+      {
+        "V": 8717,
+        "E": 31525,
+        "media_ms": 12.353857699994819
+      }
+    ],
+    "Kruskal (union-find)": [
+      {
+        "V": 872,
+        "E": 2094,
+        "media_ms": 2.085083000000054
+      },
+      {
+        "V": 1743,
+        "E": 5720,
+        "media_ms": 3.7622156999987055
+      },
+      {
+        "V": 3487,
+        "E": 13655,
+        "media_ms": 8.461633499993582
+      },
+      {
+        "V": 5230,
+        "E": 22277,
+        "media_ms": 12.76304390000007
+      },
+      {
+        "V": 6974,
+        "E": 28617,
+        "media_ms": 22.69680649999657
+      },
+      {
+        "V": 8717,
+        "E": 31525,
+        "media_ms": 27.017377099997475
+      }
+    ],
+    "Prim (heap bin\u00e1rio)": [
+      {
+        "V": 872,
+        "E": 2094,
+        "media_ms": 2.23254579999832
+      },
+      {
+        "V": 1743,
+        "E": 5720,
+        "media_ms": 4.5802730000019665
+      },
+      {
+        "V": 3487,
+        "E": 13655,
+        "media_ms": 11.08450179999636
+      },
+      {
+        "V": 5230,
+        "E": 22277,
+        "media_ms": 20.506029399999193
+      },
+      {
+        "V": 6974,
+        "E": 28617,
+        "media_ms": 41.07025690000512
+      },
+      {
+        "V": 8717,
+        "E": 31525,
+        "media_ms": 40.299112000002424
+      }
+    ]
+  },
+  "escalabilidade_fw": [
+    {
+      "V": 125,
+      "E": 148,
+      "media_ms": 1.7347276000009515
+    },
+    {
+      "V": 250,
+      "E": 483,
+      "media_ms": 12.001538699990988
+    },
+    {
+      "V": 500,
+      "E": 1090,
+      "media_ms": 100.33355899998924
+    },
+    {
+      "V": 1000,
+      "E": 2456,
+      "media_ms": 1094.1469631000075
+    },
+    {
+      "V": 2000,
+      "E": 6716,
+      "media_ms": 7940.227019000038
+    }
+  ],
+  "ajustes_loglog": {
+    "BFS": {
+      "x": "V+E",
+      "expoente_b": 0.9054564881786724,
+      "expoente_em_V+E": 0.9054564881786724
+    },
+    "DFS": {
+      "x": "V+E",
+      "expoente_b": 0.8449192447143842,
+      "expoente_em_V+E": 0.8449192447143842
+    },
+    "Eulerianidade": {
+      "x": "V+E",
+      "expoente_b": 0.8332021838429422,
+      "expoente_em_V+E": 0.8332021838429422
+    },
+    "Dijkstra (heap bin\u00e1rio)": {
+      "x": "(V+E)\u00b7log V",
+      "expoente_b": 0.81845049334425,
+      "expoente_em_V+E": 0.9080305529535688
+    },
+    "Bellman-Ford": {
+      "x": "k\u00b7E",
+      "expoente_b": 0.8488544468817434,
+      "expoente_em_V+E": 0.996781891372316
+    },
+    "Tarjan (CFC, dirigido)": {
+      "x": "V+E",
+      "expoente_b": 0.8440432193516693,
+      "expoente_em_V+E": 0.8440432193516693
+    },
+    "Kruskal (union-find)": {
+      "x": "(V+E)\u00b7log V",
+      "expoente_b": 0.8775871213111657,
+      "expoente_em_V+E": 0.9730777120109501
+    },
+    "Prim (heap bin\u00e1rio)": {
+      "x": "(V+E)\u00b7log V",
+      "expoente_b": 1.0317328511549977,
+      "expoente_em_V+E": 1.1443052071716329
+    },
+    "Floyd-Warshall": {
+      "x": "V",
+      "expoente_b": 3.0830954142518605
+    }
+  }
+}
