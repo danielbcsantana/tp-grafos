@@ -1,29 +1,41 @@
-% Formato: ACM sigconf (o template WebMedia usa a classe `webmedia`, derivada do acmart sigconf).
-% Para usar no Overleaf: abra o template WebMedia e troque \documentclass[sigconf,nonacm]{acmart}
-% por \documentclass[sigconf]{webmedia}; o restante do arquivo é compatível.
-\documentclass[sigconf,nonacm]{acmart}
+\documentclass[sigconf]{webmedia}
+
+% \usepackage{lmodern}  % removido: o próprio template proíbe lmodern (substitui a Libertine e quebra a matemática)
+%webmeda.cls is adapted from acmart.cls for use in Proceedings of the Brazilian Symposium on Multimedia and the Web (WebMedia)
 \usepackage[brazilian]{babel}
-\usepackage{booktabs}
-\usepackage{graphicx}
 \usepackage{multirow}
 \graphicspath{{../results/figures/}}
-\settopmatter{printacmref=false}
-\renewcommand\footnotetextcopyrightpermission[1]{}
-\pagestyle{plain}
+
+%%
+%% \BibTeX command to typeset the BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+\settopmatter{printacmref=false, printfolios=false}
+
+%% Choose the appropriate event.
+\setevent{webmedia}
+\proceedingsDetails[WebMedia’2026]{Proceedings of the Brazilian Symposium on Multimedia and the Web}{2026}{Lavras/MG, Brazil}
+\ISSN{2966-2753}
 
 \newcommand{\repo}{\url{https://github.com/danielbcsantana/tp-grafos}}
 
+%% end of the preamble, the start of the body of the document source.
 \begin{document}
 
-\title{Análise Estrutural e Algorítmica da Rede P2P Gnutella (p2p-Gnutella06)}
+\title[Análise da Rede P2P Gnutella (p2p-Gnutella06)]{Análise Estrutural e Algorítmica da Rede P2P Gnutella (p2p-Gnutella06)}
 \subtitle{Trabalho Prático --- Teoria dos Grafos (MATA53), UFBA}
 
 \author{Daniel Santana}
+\email{danielbcsantana10@gmail.com}
 \affiliation{%
   \institution{Instituto de Computação, Universidade Federal da Bahia}
   \city{Salvador}
   \state{BA}
   \country{Brasil}}
+
+\renewcommand{\shortauthors}{Santana}
 
 \begin{abstract}
 Este trabalho analisa o grafo \textit{p2p-Gnutella06} do repositório SNAP, uma
@@ -87,6 +99,8 @@ Os tratamentos foram feitos em \texttt{src/01\_tratamento.py}:
   \item a versão \textbf{dirigida} simples foi mantida apenas para o algoritmo de
   Tarjan, que calcula componentes fortemente conexas.
 \end{enumerate}
+\textbf{Nenhum recorte temporal foi aplicado}: o grafo não é temporal (é uma captura
+única de 06/08/2002, sem data nas arestas), e o arquivo foi usado por inteiro.
 O tamanho permite calcular tudo de forma exata, sem amostragem nem redução por memória.
 A única exceção são as 30 repetições do Floyd-Warshall (Seção~\ref{sec:p2}).
 
@@ -127,17 +141,17 @@ Métrica & Valor \\
 Número de vértices $|V|$ & 8.717 \\
 Número de arestas $|E|$ & 31.525 \\
 Grau mínimo / máximo & 1 / 115 \\
-Grau médio $\langle k\rangle = 2|E|/|V|$ (mediana; desvio) & 7,23 (5; 7,20) \\
-Densidade $2|E|/(|V|(|V|-1))$ & $8{,}30\times10^{-4}$ \\
+Grau médio $\langle k\rangle$ (mediana; desvio) & 7,23 (5; 7,20) \\
+Densidade & $8{,}30\times10^{-4}$ \\
 Número de componentes conexas & 1 \\
 Tamanho de cada componente & 8.717 \\
 Diâmetro & 10 \\
 Raio & 6 \\
 Comprimento médio dos caminhos $L$ & 4,572 \\
 Coef. de clusterização médio $C$ & 0,00668 \\
-Transitividade global (complementar) & 0,00811 \\
+Transitividade global & 0,00811 \\
 Número de triângulos & 1.142 \\
-Vértices com clusterização local nula & 85,5\% \\
+Vértices com clusterização nula & 85,5\% \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -151,14 +165,14 @@ Informação & Computada? & Forma \\
 \midrule
 Vértices, arestas & Sim & exata \\
 Graus mín./máx./médio & Sim & exata \\
-Distribuição de graus & Sim & exata (Fig.~\ref{fig:graus}) \\
+Distrib. de graus & Sim & exata (Fig.~\ref{fig:graus}) \\
 Densidade & Sim & exata \\
-Componentes (nº, tamanho) & Sim & exata \\
+Componentes & Sim & exata \\
 Diâmetro, raio & Sim & exata \\
 Comprimento médio & Sim & exata \\
 Clusterização média & Sim & exata \\
 Triângulos & Sim & exata \\
-Visualização & Sim & 400 vértices (Fig.~\ref{fig:vis}) \\
+Visualização & Sim & reduzida (Fig.~\ref{fig:vis}) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -231,20 +245,20 @@ $|E|=31.525$; $n=30$ execuções; IC de 95\% com $z=1{,}96$). $b$ é o expoente 
 ajuste $t\propto (V+E)^b$ nos subgrafos crescentes; para o Floyd-Warshall,
 $t\propto V^b$.}
 \label{tab:tempos}
-\begin{tabular}{llrrrr}
+\begin{tabular}{@{}llrrrr@{}}
 \toprule
-Algoritmo & Complexidade teórica & Média (ms) & Desvio (ms) & IC 95\% (ms) & $b$ observado \\
+Algoritmo & Compl. teórica & Média (ms) & Desvio (ms) & IC 95\% (ms) & $b$ obs. \\
 \midrule
 BFS & $O(V+E)$ & 5,74 & 1,31 & [5,27; 6,21] & 0,91 \\
 DFS (iterativa) & $O(V+E)$ & 13,62 & 3,84 & [12,25; 15,00] & 0,84 \\
 Verificação de eulerianidade & $O(V+E)$ & 7,20 & 1,78 & [6,56; 7,84] & 0,83 \\
 Dijkstra (heap binário) & $O((V+E)\log V)$ & 12,46 & 0,70 & [12,21; 12,71] & 0,91 \\
-Bellman-Ford (parada antecipada) & $O(V\cdot E)$ (pior caso) & 53,16 & 15,63 & [47,57; 58,75] & 1,00 \\
+Bellman-Ford (parada antecipada) & $O(V\cdot E)$ & 53,16 & 15,63 & [47,57; 58,75] & 1,00 \\
 Tarjan (CFC, grafo dirigido) & $O(V+E)$ & 12,67 & 7,70 & [9,92; 15,42] & 0,84 \\
 Kruskal (union-find) & $O(E\log E)$ & 23,10 & 0,74 & [22,83; 23,36] & 0,97 \\
 Prim (heap binário) & $O(E\log V)$ & 35,63 & 6,43 & [33,33; 37,93] & 1,14 \\
-Floyd-Warshall (subgrafo, $V=1000$, $E=2456$) & $\Theta(V^3)$ & 1.130,88 & 45,08 & [1.114,75; 1.147,02] & 3,08 \\
-Floyd-Warshall (grafo completo, 1 execução) & $\Theta(V^3)$ & \multicolumn{3}{c}{1.040,8 s} & --- \\
+Floyd-Warshall ($V=1000$, $E=2456$) & $\Theta(V^3)$ & 1.130,88 & 45,08 & [1.114,75; 1.147,02] & 3,08 \\
+Floyd-Warshall (grafo completo, 1×) & $\Theta(V^3)$ & \multicolumn{3}{c}{1.040,8 s} & --- \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -324,7 +338,7 @@ $\sigma = 8{,}6 > 1$~\cite{watts1998}. A propriedade, porém, é \emph{fraca}. O
 coeficiente absoluto ($0{,}0067$) é muito baixo quando comparado a redes sociais
 típicas ($C \sim 0{,}1$--$0{,}6$), e a maior parte da razão $C/C_{rand}$ vem de os
 dois valores serem minúsculos. Isso faz sentido para o Gnutella: os peers se
-conectam a outros que descobrem pela rede, não a "amigos em comum", então quase não
+conectam a outros que descobrem pela rede, não a ``amigos em comum'', então quase não
 se formam triângulos. Já os caminhos curtos são necessários. A implicação prática
 é direta: no Gnutella, as buscas são inundações limitadas por TTL (tipicamente 7
 saltos~\cite{ripeanu2002}), e, como 99,97\% dos pares estão a até 7 saltos, uma
@@ -360,8 +374,8 @@ $70$ seguido de queda abrupta, e o grau máximo é só 115 ($\approx 16\langle
 k\rangle$). A distribuição é mais dispersa que uma Poisson (coeficiente de variação
 $\approx 1$, contra $1/\sqrt{\langle k\rangle} \approx 0{,}37$ para ER), mas a
 cauda é limitada: não há hubs extremos. Esse resultado está de acordo com
-Ripeanu et al.~\cite{ripeanu2002}, que observaram que as capturas do Gnutella de
-2001--2002 deixaram de seguir uma lei de potência pura.
+Ripeanu et al.~\cite{ripeanu2002}, que já em 2001 observaram que a distribuição de
+graus do Gnutella não seguia uma lei de potência pura.
 
 \subsubsection*{(3) Robustez}
 Seguindo o Apêndice~C, trabalhamos na maior componente (o grafo inteiro),
@@ -433,7 +447,7 @@ saída} no arquivo dirigido original (Figura~\ref{fig:desc}).
   média 38 arestas \emph{de entrada}: são peers populares, citados por muitos
   outros. Provavelmente eram \textit{ultrapeers}.
 \end{itemize}
-Essa estrutura de "núcleo rastreado + folhas" explica, ao mesmo tempo, quatro
+Essa estrutura de ``núcleo rastreado + folhas'' explica, ao mesmo tempo, quatro
 resultados anteriores: (i) a bimodalidade dos graus e a ausência de lei de
 potência; (ii) a clusterização baixa, porque folhas não rastreadas nunca fecham
 triângulos entre si; (iii) os 5.491 componentes fortemente conexos unitários do
@@ -490,7 +504,7 @@ central é que a estrutura do grafo é moldada pelo processo de coleta: 57\% dos
 vértices nunca foram rastreados e não se ligam entre si. Esse fato explica a
 bimodalidade, a baixa clusterização e as componentes fortemente conexas unitárias.
 
-\textbf{Repositório:} \repo{} (códigos, dados tratados e README de execução).
+\textbf{Repositório} (códigos, dados tratados e README de execução):\\ \repo.
 
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{refs}

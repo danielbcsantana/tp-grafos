@@ -36,7 +36,9 @@ results/
   *.json, distribuicao_graus.csv   resultados numéricos
   figures/*.png                    gráficos usados no relatório
 relatorio/
-  relatorio.tex, refs.bib, relatorio.pdf  relatório (ACM sigconf / WebMedia)
+  relatorio.tex, refs.bib   fonte do relatório (template WebMedia, classe webmedia sigconf)
+  webmedia.cls              classe do template WebMedia
+  relatorio.pdf             relatório compilado (enviado como 224216274.pdf)
 ```
 
 ## Como executar
@@ -49,11 +51,13 @@ bash run_all.sh                 # pipeline completo (~15-25 min)
 bash run_all.sh --fw-completo   # + Floyd-Warshall no grafo inteiro (~20-30 min a mais)
 ```
 
-Ou execute cada etapa em ordem: `python3 src/01_tratamento.py`, depois `02_…`, `03_…`, `04_…`.
+Ou execute cada etapa em ordem: `python3 src/01_tratamento.py`, depois `02_…`, `03_…`, `04_…` e `05_…`.
 Cada script grava seus resultados em `results/` e as figuras em `results/figures/`.
 As sementes aleatórias são fixas (`SEED = 2026`), então os resultados são reproduzíveis.
 
-Para compilar o relatório: `cd relatorio && pdflatex relatorio && bibtex relatorio && pdflatex relatorio && pdflatex relatorio`.
+Para compilar o relatório (TeX Live com acmart, libertine, newtx e babel-portuguese):
+`cd relatorio && pdflatex relatorio && bibtex relatorio && pdflatex relatorio && pdflatex relatorio`.
+Também compila no Overleaf: envie a pasta `relatorio/` e as figuras de `results/figures/`, ajustando o `\graphicspath`.
 
 ## Tratamento realizado
 
@@ -61,7 +65,8 @@ Para compilar o relatório: `cd relatorio && pdflatex relatorio && bibtex relato
 2. Verificação de auto-laços e arestas repetidas (não havia nenhum).
 3. Dirigido → não direcionado: cada arco u→v vira a aresta {u, v}. O arquivo não tem pares recíprocos, então nenhuma aresta foi fundida (31.525 arestas).
 4. Extração da maior componente conexa. O grafo não direcionado já é conexo, então a LCC é o grafo inteiro.
-5. A versão dirigida simples foi mantida apenas para o algoritmo de Tarjan (componentes fortemente conexas).
+5. Sem recorte temporal: o grafo não é temporal (captura única de 06/08/2002), então o arquivo foi usado inteiro.
+6. A versão dirigida simples foi mantida apenas para o algoritmo de Tarjan (componentes fortemente conexas).
 
 ## Observações de implementação
 

@@ -15,12 +15,13 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from grafo import (RAW, UNDIR, LCC, DIRECIONADO, RESULTS, ler_arestas_raw,
+from grafo import (RAW, UNDIR, LCC, DIRECIONADO, RESULTS, PROC_DIR, ler_arestas_raw,
                    salvar_edgelist, adjacencia, componentes)
 
 
 def main():
     os.makedirs(RESULTS, exist_ok=True)
+    os.makedirs(PROC_DIR, exist_ok=True)
     bruto = ler_arestas_raw(RAW)
     nos_brutos = {u for e in bruto for u in e}
     laços = sum(1 for u, v in bruto if u == v)
