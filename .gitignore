@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+relatorio/*.aux
+relatorio/*.log
+relatorio/*.out
+relatorio/*.bbl
+relatorio/*.blg
+relatorio/*.fls
+relatorio/*.fdb_latexmk
+relatorio/teste.*
+results/*.log

@@ -1,0 +1,13 @@
+{
+  "bruto_vertices": 8717,
+  "bruto_arestas_dirigidas": 31525,
+  "auto_lacos_removidos": 0,
+  "arestas_dirigidas_duplicadas": 0,
+  "pares_reciprocos_u_v_e_v_u": 0,
+  "nao_dir_vertices": 8717,
+  "nao_dir_arestas": 31525,
+  "nao_dir_componentes": 1,
+  "lcc_vertices": 8717,
+  "lcc_arestas": 31525,
+  "lcc_fracao_vertices": 1.0
+}
