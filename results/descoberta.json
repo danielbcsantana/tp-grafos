@@ -1,0 +1,16 @@
+{
+  "V": 8717,
+  "nao_rastreados": 4978,
+  "frac_nao_rastreados": 0.5710680279912814,
+  "rastreados": 3739,
+  "grau_medio_nao_rastreados": 3.3045399758939333,
+  "grau_mediano_nao_rastreados": 2.0,
+  "grau_medio_rastreados": 12.463225461353304,
+  "grau_mediano_rastreados": 12.0,
+  "arestas_entre_nao_rastreados": 0,
+  "rastreados_com_saida_10": 2470,
+  "frac_rastreados_com_saida_10": 0.6606044396897566,
+  "grau_saida_max": 113,
+  "vertices_grau_ge_30": 75,
+  "media_entrada_grau_ge_30": 38.06666666666667
+}
